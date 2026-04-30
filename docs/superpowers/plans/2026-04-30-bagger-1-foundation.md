@@ -1728,24 +1728,20 @@ git commit -m "feat: bundle 10-disc baseline fixture + loader on first launch"
 
 ---
 
-## Task 10: Project Docs — README, CHANGELOG, LICENSE
+## Task 10: Project Docs — CHANGELOG (LICENSE + README pre-done)
 
 **Files:**
-- Create: `README.md` (public — normal prose)
-- Create: `CHANGELOG.md` (public — normal prose, Keep a Changelog format)
-- Create: `LICENSE` (GPLv3 full text)
+- Already committed: `LICENSE` (GPLv3) — commit `dbcea65`
+- Already committed: `README.md` — commit `dbcea65`
+- Create: `CHANGELOG.md` (public, Keep a Changelog format)
 
-- [ ] **Step 1: Write `LICENSE`**
+- [x] **Step 1: LICENSE present** (`curl -sL https://www.gnu.org/licenses/gpl-3.0.txt -o LICENSE` already executed)
 
-Download official GPLv3 text:
+- [x] **Step 2: README present** (front-loaded ahead of subagent execution)
 
-```bash
-curl -sL https://www.gnu.org/licenses/gpl-3.0.txt -o LICENSE
-```
+If you are a subagent: skip steps 1–2, both files exist. Run `head -2 LICENSE` to confirm GPLv3, run `ls README.md` to confirm presence. Proceed to step 3.
 
-Verify first line: `                    GNU GENERAL PUBLIC LICENSE` and second line: `                       Version 3, 29 June 2007`.
-
-- [ ] **Step 2: Write `README.md`** (public-facing, normal prose)
+> **Original step-2 README content (kept for reference, do not re-write):**
 
 ```markdown
 # Bagger
