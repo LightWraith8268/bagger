@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Bagger</string>
+    <string name="nav_shelf">Shelf</string>
+    <string name="nav_bags">Bags</string>
+    <string name="nav_discover">Discover</string>
+    <string name="nav_more">More</string>
+</resources>
