@@ -94,10 +94,14 @@ dependencies {
 
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly(libs.junit.jupiter.engine)
+    testImplementation("junit:junit:4.13.2")
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.11.4")
+    testImplementation("org.jetbrains.kotlin:kotlin-test:2.1.0")
     testImplementation(libs.mockk)
     testImplementation(libs.turbine)
     testImplementation(libs.coroutines.test)
     testImplementation(libs.robolectric)
+    testImplementation("androidx.test:core:1.6.1")
 
     androidTestImplementation(libs.androidx.test.junit)
     androidTestImplementation(libs.espresso.core)
