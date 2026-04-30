@@ -104,6 +104,12 @@ dependencies {
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.compose.ui.test.junit4)
     androidTestImplementation(libs.room.testing)
+    androidTestImplementation("org.jetbrains.kotlin:kotlin-test:2.1.0")
+}
+
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
+    arg("room.incremental", "true")
 }
 
 tasks.withType<Test> { useJUnitPlatform() }
