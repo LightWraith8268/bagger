@@ -18,6 +18,7 @@ mockk = "1.13.13"
 turbine = "1.2.0"
 robolectric = "4.14"
 androidx-test-junit = "1.2.1"
+androidx-test-core = "1.6.1"
 espresso = "3.6.1"
 
 [libraries]
@@ -56,6 +57,8 @@ turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 androidx-test-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-test-junit" }
+androidx-test-core = { module = "androidx.test:core", version.ref = "androidx-test-core" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }

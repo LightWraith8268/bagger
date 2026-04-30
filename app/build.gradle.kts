@@ -96,19 +96,19 @@ dependencies {
     testRuntimeOnly(libs.junit.jupiter.engine)
     testImplementation("junit:junit:4.13.2")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.11.4")
-    testImplementation("org.jetbrains.kotlin:kotlin-test:2.1.0")
+    testImplementation(libs.kotlin.test)
     testImplementation(libs.mockk)
     testImplementation(libs.turbine)
     testImplementation(libs.coroutines.test)
     testImplementation(libs.robolectric)
-    testImplementation("androidx.test:core:1.6.1")
+    testImplementation(libs.androidx.test.core)
 
     androidTestImplementation(libs.androidx.test.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.compose.ui.test.junit4)
     androidTestImplementation(libs.room.testing)
-    androidTestImplementation("org.jetbrains.kotlin:kotlin-test:2.1.0")
+    androidTestImplementation(libs.kotlin.test)
 }
 
 ksp {
