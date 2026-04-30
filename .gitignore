@@ -1,0 +1,56 @@
+# Gradle
+.gradle/
+build/
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/**/build/
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Android
+local.properties
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+
+# Keystore / signing
+*.jks
+*.keystore
+keystore.properties
+
+# Logs
+*.log
+
+# Generated
+generated/
+release/
+out/
+
+# Kotlin
+.kotlin/
+
+# Hilt / KSP
+**/build/generated/ksp/
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Python (DB scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+*.egg-info/
