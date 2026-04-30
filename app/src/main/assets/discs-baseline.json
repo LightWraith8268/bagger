@@ -1,0 +1,12 @@
+[
+  {"id":"innova-aviar","brand":"Innova","mold":"Aviar","speed":2,"glide":3,"turn":0,"fade":1,"discType":"Putter","stability":"stable","pdgaApproved":true,"yearReleased":1985,"primaryStampUrl":null,"aliases":[]},
+  {"id":"innova-destroyer","brand":"Innova","mold":"Destroyer","speed":12,"glide":5,"turn":-1,"fade":3,"discType":"Driver","stability":"overstable","pdgaApproved":true,"yearReleased":2008,"primaryStampUrl":null,"aliases":["Star Destroyer"]},
+  {"id":"discraft-buzzz","brand":"Discraft","mold":"Buzzz","speed":5,"glide":4,"turn":-1,"fade":1,"discType":"Mid","stability":"stable","pdgaApproved":true,"yearReleased":2003,"primaryStampUrl":null,"aliases":[]},
+  {"id":"discraft-zone","brand":"Discraft","mold":"Zone","speed":4,"glide":3,"turn":0,"fade":3,"discType":"Approach","stability":"overstable","pdgaApproved":true,"yearReleased":2014,"primaryStampUrl":null,"aliases":[]},
+  {"id":"mvp-tesla","brand":"MVP","mold":"Tesla","speed":9,"glide":5,"turn":-1,"fade":2,"discType":"Fairway","stability":"stable","pdgaApproved":true,"yearReleased":2014,"primaryStampUrl":null,"aliases":[]},
+  {"id":"dynamic-judge","brand":"Dynamic Discs","mold":"Judge","speed":2,"glide":4,"turn":0,"fade":1,"discType":"Putter","stability":"stable","pdgaApproved":true,"yearReleased":2013,"primaryStampUrl":null,"aliases":[]},
+  {"id":"latitude64-pure","brand":"Latitude 64","mold":"Pure","speed":3,"glide":3,"turn":-1,"fade":1,"discType":"Putter","stability":"understable","pdgaApproved":true,"yearReleased":2013,"primaryStampUrl":null,"aliases":[]},
+  {"id":"discmania-fd","brand":"Discmania","mold":"FD","speed":7,"glide":6,"turn":-1,"fade":1,"discType":"Fairway","stability":"stable","pdgaApproved":true,"yearReleased":2009,"primaryStampUrl":null,"aliases":["Jackal"]},
+  {"id":"prodigy-h3","brand":"Prodigy","mold":"H3 V2","speed":7,"glide":5,"turn":0,"fade":2,"discType":"Fairway","stability":"overstable","pdgaApproved":true,"yearReleased":2017,"primaryStampUrl":null,"aliases":[]},
+  {"id":"westside-harp","brand":"Westside","mold":"Harp","speed":4,"glide":3,"turn":0,"fade":3,"discType":"Approach","stability":"overstable","pdgaApproved":true,"yearReleased":2014,"primaryStampUrl":null,"aliases":[]}
+]
