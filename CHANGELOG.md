@@ -4,6 +4,8 @@ All notable changes to Bagger are documented here. The format follows [Keep a Ch
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-04-30
+
 ### Added
 
 - Initial project scaffolding: Kotlin/Compose application with Hilt dependency injection and Room database.
@@ -12,3 +14,4 @@ All notable changes to Bagger are documented here. The format follows [Keep a Ch
 - DataStore preferences wrapper for theme mode, onboarding state, and disc database sync metadata.
 - Bundled fixture of ten common discs to support development and offline first launch.
 - Splash screen using the Android 12+ SplashScreen API.
+- Continuous integration: auto-merge workflow for `claude/dev` to `main`, release build workflow producing debug APK artifacts, and a placeholder disc database validation workflow.
