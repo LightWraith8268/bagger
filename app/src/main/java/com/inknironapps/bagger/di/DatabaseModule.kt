@@ -6,6 +6,7 @@ import com.inknironapps.bagger.data.db.BaggerDatabase
 import com.inknironapps.bagger.data.db.dao.BagDao
 import com.inknironapps.bagger.data.db.dao.DiscDao
 import com.inknironapps.bagger.data.db.dao.DiscDbMetaDao
+import com.inknironapps.bagger.data.db.dao.IdSubmissionQueueDao
 import com.inknironapps.bagger.data.db.dao.LostDiscEventDao
 import com.inknironapps.bagger.data.db.dao.OwnedDiscDao
 import com.inknironapps.bagger.data.db.dao.WishlistDao
@@ -32,4 +33,5 @@ object DatabaseModule {
     @Provides fun provideLostDiscEventDao(db: BaggerDatabase): LostDiscEventDao = db.lostDiscEventDao()
     @Provides fun provideWishlistDao(db: BaggerDatabase): WishlistDao = db.wishlistDao()
     @Provides fun provideDiscDbMetaDao(db: BaggerDatabase): DiscDbMetaDao = db.discDbMetaDao()
+    @Provides fun provideIdSubmissionQueueDao(db: BaggerDatabase): IdSubmissionQueueDao = db.idSubmissionQueueDao()
 }

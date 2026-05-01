@@ -6,6 +6,7 @@ import androidx.room.TypeConverters
 import com.inknironapps.bagger.data.db.dao.BagDao
 import com.inknironapps.bagger.data.db.dao.DiscDao
 import com.inknironapps.bagger.data.db.dao.DiscDbMetaDao
+import com.inknironapps.bagger.data.db.dao.IdSubmissionQueueDao
 import com.inknironapps.bagger.data.db.dao.LostDiscEventDao
 import com.inknironapps.bagger.data.db.dao.OwnedDiscDao
 import com.inknironapps.bagger.data.db.dao.WishlistDao
@@ -40,4 +41,5 @@ abstract class BaggerDatabase : RoomDatabase() {
     abstract fun lostDiscEventDao(): LostDiscEventDao
     abstract fun wishlistDao(): WishlistDao
     abstract fun discDbMetaDao(): DiscDbMetaDao
+    abstract fun idSubmissionQueueDao(): IdSubmissionQueueDao
 }
