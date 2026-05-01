@@ -4,6 +4,26 @@ All notable changes to Bagger are documented here. The format follows [Keep a Ch
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-05-01
+
+### Added
+
+- Real Shelf screen with filterable owned-disc grid and an Add disc shortcut.
+- Bags tab with a list of saved bags, a create dialog, and a bag detail screen showing the discs assigned to that bag.
+- Discover screen for browsing the full disc catalog with text search and disc-type filters.
+- Disc detail screens for both catalog discs (with an Add to my shelf action) and owned discs (with state controls and bag reassignment).
+- Repository layer (`DiscCatalogRepository`, `OwnedDiscRepository`, `BagRepository`) backed by Room, wired through Hilt.
+- New shared UI components: `DiscCard`, `FlightNumbersRow`, and `EmptyState`.
+- Compose smoke tests covering empty shelf, Discover search field, and Bags create action.
+
+## [0.3.0] - 2026-05-01
+
+### Added
+
+- App-side remote disc database sync. On launch, the app fetches the canonical `discs.json` from the public repository, applies it to the local Room cache, and stores the response ETag for cheap revalidation. Subsequent syncs run on a 7-day periodic WorkManager schedule with network constraints.
+- Schema version handshake: if the remote catalog declares a newer schema than the installed app understands, sync stops gracefully without corrupting local data.
+- Test suite for the sync worker using MockWebServer covering successful upsert, 304-not-modified short-circuit, and unsupported-schema failure paths.
+
 ## [0.2.0] - 2026-05-01
 
 ### Added
