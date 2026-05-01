@@ -14,6 +14,15 @@ sealed class Destination(val route: String, val label: String, val icon: ImageVe
     data object More     : Destination("more",     "More",     Icons.Filled.MoreHoriz)
 }
 
+object DetailRoutes {
+    const val OwnedDetail = "owned/{ownedId}"
+    fun ownedDetail(id: String) = "owned/$id"
+    const val CatalogDetail = "catalog/{discId}"
+    fun catalogDetail(id: String) = "catalog/$id"
+    const val BagDetail = "bag/{bagId}"
+    fun bagDetail(id: String) = "bag/$id"
+}
+
 val BottomDestinations: List<Destination> = listOf(
     Destination.Shelf, Destination.Bags, Destination.Discover, Destination.More
 )
