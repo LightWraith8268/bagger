@@ -4,6 +4,17 @@ All notable changes to Bagger are documented here. The format follows [Keep a Ch
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-05-01
+
+### Added
+
+- Stats screen showing total disc count, lost-this-year, retired count, and bar charts grouped by brand, disc type, and plastic.
+- Real Settings screen replacing the prior placeholder. Sections cover appearance (system/light/dark theme switcher), backup & data (JSON export and import via Storage Access Framework, CSV inventory export, delete all data), about (privacy policy, terms, send feedback, version footer).
+- In-app update card backed by Play Core's AppUpdateManager. When a Play Store update is available, an opt-in card appears at the top of Settings linking to the listing.
+- What's New dialog. After updating, a parsed-from-`CHANGELOG.md` summary covering every release between the previously-installed version and the current build is shown once, then dismissed.
+- Onboarding empty-state on first launch with a Snap your first disc call to action.
+- Unit tests for the changelog parser covering version extraction, section parsing, and inclusive/exclusive `entriesBetween` ranges.
+
 ## [0.6.0] - 2026-05-01
 
 ### Added

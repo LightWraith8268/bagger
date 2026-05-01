@@ -6,8 +6,6 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.inknironapps.bagger.ui.screens.SettingsPlaceholder
-import com.inknironapps.bagger.ui.screens.StatsPlaceholder
 import com.inknironapps.bagger.ui.screens.add_disc.AddDiscRoute
 import com.inknironapps.bagger.ui.screens.bags.BagDetailScreen
 import com.inknironapps.bagger.ui.screens.bags.BagsScreen
@@ -17,7 +15,9 @@ import com.inknironapps.bagger.ui.screens.disc_detail.OwnedDiscDetailScreen
 import com.inknironapps.bagger.ui.screens.discover.DiscoverScreen
 import com.inknironapps.bagger.ui.screens.lost_map.LostMapScreen
 import com.inknironapps.bagger.ui.screens.more.MoreScreen
+import com.inknironapps.bagger.ui.screens.settings.SettingsScreen
 import com.inknironapps.bagger.ui.screens.shelf.ShelfScreen
+import com.inknironapps.bagger.ui.screens.stats.StatsScreen
 import com.inknironapps.bagger.ui.screens.wishlist.WishlistScreen
 
 @Composable
@@ -79,10 +79,10 @@ fun BaggerNavHost(navController: NavHostController) {
             ComparisonScreen(onBack = { navController.popBackStack() })
         }
         composable(DetailRoutes.Stats) {
-            StatsPlaceholder(onBack = { navController.popBackStack() })
+            StatsScreen(onBack = { navController.popBackStack() })
         }
         composable(DetailRoutes.Settings) {
-            SettingsPlaceholder(onBack = { navController.popBackStack() })
+            SettingsScreen(onBack = { navController.popBackStack() })
         }
     }
 }

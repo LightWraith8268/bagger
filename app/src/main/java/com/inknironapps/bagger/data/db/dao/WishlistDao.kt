@@ -15,4 +15,7 @@ interface WishlistDao {
 
     @Query("SELECT * FROM wishlist_items ORDER BY addedAt DESC")
     fun observeAll(): Flow<List<WishlistItemEntity>>
+
+    @Query("SELECT * FROM wishlist_items")
+    suspend fun getAllOnce(): List<WishlistItemEntity>
 }

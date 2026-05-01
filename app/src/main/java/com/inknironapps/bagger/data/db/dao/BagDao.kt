@@ -18,4 +18,7 @@ interface BagDao {
 
     @Query("SELECT * FROM bags WHERE id = :id")
     suspend fun getById(id: String): BagEntity?
+
+    @Query("SELECT * FROM bags")
+    suspend fun getAllOnce(): List<BagEntity>
 }
