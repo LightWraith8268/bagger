@@ -4,6 +4,14 @@ All notable changes to Bagger are documented here. The format follows [Keep a Ch
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-05-01
+
+### Added
+
+- App-side remote disc database sync. On launch, the app fetches the canonical `discs.json` from the public repository, applies it to the local Room cache, and stores the response ETag for cheap revalidation. Subsequent syncs run on a 7-day periodic WorkManager schedule with network constraints.
+- Schema version handshake: if the remote catalog declares a newer schema than the installed app understands, sync stops gracefully without corrupting local data.
+- Test suite for the sync worker using MockWebServer covering successful upsert, 304-not-modified short-circuit, and unsupported-schema failure paths.
+
 ## [0.2.0] - 2026-05-01
 
 ### Added
