@@ -4,6 +4,20 @@ All notable changes to Bagger are documented here. The format follows [Keep a Ch
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-01
+
+### Added
+
+- Disc catalog data pipeline: Python tooling under `data/scripts/` covering a PDGA approved-disc scraper, a shared manufacturer-scraper framework, and per-brand scrapers for Innova, Discraft, MVP, Dynamic Discs, Latitude 64, Discmania, Prodigy, and Westside. Each per-brand scraper currently uses fixture-based parsers; live-site iteration is tracked as future work.
+- JSON Schema (`data/schema.json`) describing the disc catalog format, validated in CI.
+- Initial canonical disc database at `data/discs.json` containing 57 popular discs across all 8 tracked manufacturers, hand-curated from public flight-number disclosures.
+- Continuous integration: the `data-validate` workflow now runs the full Python test suite and `validate.py --no-net` on every pull request that touches `data/`.
+- The bundled disc fixture inside the APK, used on first launch before any remote sync, now contains thirty representative discs spanning all five disc types and all eight brands.
+
+### Changed
+
+- The instrumented `BaselineDiscLoaderTest` now asserts at least ten baseline discs are present rather than exactly ten, allowing the bundled fixture to grow over time without breaking the test.
+
 ## [0.1.0] - 2026-04-30
 
 ### Added
