@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.inknironapps.bagger.ui.screens.MoreScreen
+import com.inknironapps.bagger.ui.screens.add_disc.AddDiscRoute
 import com.inknironapps.bagger.ui.screens.bags.BagDetailScreen
 import com.inknironapps.bagger.ui.screens.bags.BagsScreen
 import com.inknironapps.bagger.ui.screens.disc_detail.CatalogDiscDetailScreen
@@ -19,9 +20,12 @@ fun BaggerNavHost(navController: NavHostController) {
     NavHost(navController, startDestination = Destination.Shelf.route) {
         composable(Destination.Shelf.route) {
             ShelfScreen(
-                onAddDisc = { navController.navigate(Destination.Discover.route) },
+                onAddDisc = { navController.navigate(DetailRoutes.AddDisc) },
                 onDiscClick = { id -> navController.navigate(DetailRoutes.ownedDetail(id)) }
             )
+        }
+        composable(DetailRoutes.AddDisc) {
+            AddDiscRoute(onDone = { navController.popBackStack() })
         }
         composable(Destination.Bags.route) {
             BagsScreen(onBagClick = { id -> navController.navigate(DetailRoutes.bagDetail(id)) })
