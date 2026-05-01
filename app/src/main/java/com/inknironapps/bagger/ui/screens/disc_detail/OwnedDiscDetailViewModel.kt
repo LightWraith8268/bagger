@@ -5,9 +5,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.inknironapps.bagger.data.db.entity.BagEntity
 import com.inknironapps.bagger.data.db.entity.DiscEntity
+import com.inknironapps.bagger.data.db.entity.LostDiscEventEntity
 import com.inknironapps.bagger.data.db.entity.OwnedDiscEntity
+import com.inknironapps.bagger.data.location.LocationProvider
 import com.inknironapps.bagger.domain.repo.BagRepository
 import com.inknironapps.bagger.domain.repo.DiscCatalogRepository
+import com.inknironapps.bagger.domain.repo.LostDiscEventRepository
 import com.inknironapps.bagger.domain.repo.OwnedDiscRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
@@ -16,6 +19,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import java.util.UUID
 import javax.inject.Inject
 
 data class OwnedDetailUi(
@@ -29,6 +33,8 @@ class OwnedDiscDetailViewModel @Inject constructor(
     savedState: SavedStateHandle,
     private val ownedRepo: OwnedDiscRepository,
     private val catalogRepo: DiscCatalogRepository,
+    private val lostRepo: LostDiscEventRepository,
+    private val location: LocationProvider,
     bagRepo: BagRepository
 ) : ViewModel() {
     private val ownedId: String = checkNotNull(savedState["ownedId"])
@@ -53,6 +59,27 @@ class OwnedDiscDetailViewModel @Inject constructor(
                     updatedAt = System.currentTimeMillis()
                 )
             )
+        }
+    }
+
+    fun markLost(courseName: String?, hole: Int?, notes: String?, captureGps: Boolean) {
+        val o = ui.value.owned ?: return
+        viewModelScope.launch {
+            val pos = if (captureGps) location.current() else null
+            lostRepo.upsert(
+                LostDiscEventEntity(
+                    id = UUID.randomUUID().toString(),
+                    ownedDiscId = o.id,
+                    lostAt = System.currentTimeMillis(),
+                    lat = pos?.lat,
+                    lng = pos?.lng,
+                    courseName = courseName,
+                    holeNumber = hole,
+                    notes = notes,
+                    foundAt = null
+                )
+            )
+            ownedRepo.upsert(o.copy(state = "Lost", updatedAt = System.currentTimeMillis()))
         }
     }
 

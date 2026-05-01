@@ -22,6 +22,11 @@ object DetailRoutes {
     const val BagDetail = "bag/{bagId}"
     fun bagDetail(id: String) = "bag/$id"
     const val AddDisc = "add_disc"
+    const val Wishlist = "wishlist"
+    const val LostMap = "lost_map"
+    const val Compare = "compare"
+    const val Stats = "stats"
+    const val Settings = "settings"
 }
 
 val BottomDestinations: List<Destination> = listOf(

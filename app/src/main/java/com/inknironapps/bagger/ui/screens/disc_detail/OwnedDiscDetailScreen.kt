@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.inknironapps.bagger.ui.components.FlightNumbersRow
+import com.inknironapps.bagger.ui.screens.lost_map.MarkLostDialog
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -39,6 +40,7 @@ fun OwnedDiscDetailScreen(
 ) {
     val state by vm.ui.collectAsStateWithLifecycle()
     var showBagPicker by remember { mutableStateOf(false) }
+    var showLostDialog by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -79,9 +81,19 @@ fun OwnedDiscDetailScreen(
             Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 FilledTonalButton(onClick = { vm.changeState("Shelf", null) }) { Text("Shelf") }
                 FilledTonalButton(onClick = { showBagPicker = true }) { Text("A bag") }
-                FilledTonalButton(onClick = { vm.changeState("Lost") }) { Text("Lost") }
+                FilledTonalButton(onClick = { showLostDialog = true }) { Text("Lost") }
                 FilledTonalButton(onClick = { vm.changeState("Retired") }) { Text("Retired") }
             }
+        }
+
+        if (showLostDialog) {
+            MarkLostDialog(
+                onDismiss = { showLostDialog = false },
+                onConfirm = { course, hole, notes, gps ->
+                    vm.markLost(course, hole, notes, gps)
+                    showLostDialog = false
+                }
+            )
         }
 
         if (showBagPicker) {

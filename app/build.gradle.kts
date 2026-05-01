@@ -19,6 +19,7 @@ android {
         versionName = "0.1.0"
         testInstrumentationRunner = "com.inknironapps.bagger.HiltTestRunner"
         vectorDrawables { useSupportLibrary = true }
+        manifestPlaceholders["MAPS_API_KEY"] = providers.gradleProperty("MAPS_API_KEY").getOrElse("")
     }
 
     buildFeatures {
@@ -110,6 +111,9 @@ dependencies {
     implementation(libs.mlkit.text.recognition)
     implementation(libs.coil.compose)
     implementation(libs.accompanist.permissions)
+    implementation(libs.maps.compose)
+    implementation(libs.play.services.maps)
+    implementation(libs.play.services.location)
 
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly(libs.junit.jupiter.engine)

@@ -6,14 +6,19 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.inknironapps.bagger.ui.screens.MoreScreen
+import com.inknironapps.bagger.ui.screens.SettingsPlaceholder
+import com.inknironapps.bagger.ui.screens.StatsPlaceholder
 import com.inknironapps.bagger.ui.screens.add_disc.AddDiscRoute
 import com.inknironapps.bagger.ui.screens.bags.BagDetailScreen
 import com.inknironapps.bagger.ui.screens.bags.BagsScreen
+import com.inknironapps.bagger.ui.screens.comparison.ComparisonScreen
 import com.inknironapps.bagger.ui.screens.disc_detail.CatalogDiscDetailScreen
 import com.inknironapps.bagger.ui.screens.disc_detail.OwnedDiscDetailScreen
 import com.inknironapps.bagger.ui.screens.discover.DiscoverScreen
+import com.inknironapps.bagger.ui.screens.lost_map.LostMapScreen
+import com.inknironapps.bagger.ui.screens.more.MoreScreen
 import com.inknironapps.bagger.ui.screens.shelf.ShelfScreen
+import com.inknironapps.bagger.ui.screens.wishlist.WishlistScreen
 
 @Composable
 fun BaggerNavHost(navController: NavHostController) {
@@ -33,7 +38,15 @@ fun BaggerNavHost(navController: NavHostController) {
         composable(Destination.Discover.route) {
             DiscoverScreen(onDiscClick = { id -> navController.navigate(DetailRoutes.catalogDetail(id)) })
         }
-        composable(Destination.More.route) { MoreScreen() }
+        composable(Destination.More.route) {
+            MoreScreen(
+                onWishlist = { navController.navigate(DetailRoutes.Wishlist) },
+                onLostMap = { navController.navigate(DetailRoutes.LostMap) },
+                onCompare = { navController.navigate(DetailRoutes.Compare) },
+                onStats = { navController.navigate(DetailRoutes.Stats) },
+                onSettings = { navController.navigate(DetailRoutes.Settings) }
+            )
+        }
 
         composable(
             DetailRoutes.OwnedDetail,
@@ -55,6 +68,21 @@ fun BaggerNavHost(navController: NavHostController) {
                 onBack = { navController.popBackStack() },
                 onDiscClick = { id -> navController.navigate(DetailRoutes.ownedDetail(id)) }
             )
+        }
+        composable(DetailRoutes.Wishlist) {
+            WishlistScreen(onBack = { navController.popBackStack() })
+        }
+        composable(DetailRoutes.LostMap) {
+            LostMapScreen(onBack = { navController.popBackStack() })
+        }
+        composable(DetailRoutes.Compare) {
+            ComparisonScreen(onBack = { navController.popBackStack() })
+        }
+        composable(DetailRoutes.Stats) {
+            StatsPlaceholder(onBack = { navController.popBackStack() })
+        }
+        composable(DetailRoutes.Settings) {
+            SettingsPlaceholder(onBack = { navController.popBackStack() })
         }
     }
 }
