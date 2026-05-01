@@ -11,14 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with: { python-version: "3.13" }
 
-      - name: Placeholder validation (real validate.py lands in Plan 2)
+      - name: Install deps
+        working-directory: data/scripts
         run: |
-          echo "Disc database validator stub. Plan 2 will add scripts/validate.py."
-          if [ -f data/discs.json ]; then
-            python -c "import json,sys; json.load(open('data/discs.json')); print('discs.json parses as JSON')"
-          else
-            echo "No discs.json yet — skipping."
-          fi
+          python -m pip install -U pip
+          pip install -r requirements.txt
+
+      - name: Run script tests
+        working-directory: data/scripts
+        run: pytest tests/ -v
+
+      - name: Validate discs.json
+        if: hashFiles('data/discs.json') != ''
+        working-directory: data/scripts
+        run: python validate.py --no-net
