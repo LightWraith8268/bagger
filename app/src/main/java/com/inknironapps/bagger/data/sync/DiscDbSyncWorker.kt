@@ -23,7 +23,8 @@ class DiscDbSyncWorker @AssistedInject constructor(
 ) : CoroutineWorker(context, params) {
 
     companion object {
-        const val DISCS_URL =
+        @Volatile
+        var DISCS_URL: String =
             "https://raw.githubusercontent.com/LightWraith8268/bagger/main/data/discs.json"
         const val SUPPORTED_SCHEMA_VERSION = 1
     }
