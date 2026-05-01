@@ -34,6 +34,7 @@ accompanist-permissions = "0.36.0"
 maps-compose = "6.4.4"
 play-services-maps = "19.0.0"
 play-services-location = "21.3.0"
+play-app-update = "2.1.0"
 
 [libraries]
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
@@ -100,6 +101,8 @@ accompanist-permissions = { module = "com.google.accompanist:accompanist-permiss
 maps-compose = { module = "com.google.maps.android:maps-compose", version.ref = "maps-compose" }
 play-services-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "play-services-maps" }
 play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "play-services-location" }
+play-app-update = { module = "com.google.android.play:app-update", version.ref = "play-app-update" }
+play-app-update-ktx = { module = "com.google.android.play:app-update-ktx", version.ref = "play-app-update" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

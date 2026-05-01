@@ -114,6 +114,8 @@ dependencies {
     implementation(libs.maps.compose)
     implementation(libs.play.services.maps)
     implementation(libs.play.services.location)
+    implementation(libs.play.app.update)
+    implementation(libs.play.app.update.ktx)
 
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly(libs.junit.jupiter.engine)
@@ -144,3 +146,13 @@ ksp {
 }
 
 tasks.withType<Test> { useJUnitPlatform() }
+
+val copyChangelog by tasks.registering(Copy::class) {
+    from(rootProject.file("CHANGELOG.md"))
+    into(layout.projectDirectory.dir("src/main/assets"))
+}
+afterEvaluate {
+    tasks.matching { it.name.startsWith("preBuild") }.configureEach {
+        dependsOn(copyChangelog)
+    }
+}
