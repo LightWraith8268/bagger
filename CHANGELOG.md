@@ -4,6 +4,16 @@ All notable changes to Bagger are documented here. The format follows [Keep a Ch
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-05-01
+
+### Added
+
+- Wishlist with one-tap add from any catalog disc detail page and a Bought it action that converts a wishlist item into an owned disc on your shelf.
+- Lost disc tracking: marking a disc Lost from the disc detail screen now opens a dialog for course name, hole number, optional notes, and an opt-in GPS pin. The Lost discs map under More renders pinned events on Google Maps; events without GPS appear in a list below.
+- Disc comparison screen for picking two or three discs side by side with a flight-chart Canvas overlay and flight numbers per disc.
+- More tab is now a real menu wiring Wishlist, Lost discs map, Compare discs, plus placeholder rows for Stats and Settings (filled in by Plan 7).
+- New repository layer for the wishlist and lost-disc-event tables; LocationProvider wraps FusedLocationProviderClient.
+
 ## [0.5.0] - 2026-05-01
 
 ### Added
