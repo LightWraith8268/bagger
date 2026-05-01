@@ -2,6 +2,7 @@ package com.inknironapps.bagger.ui.screens.disc_detail
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -12,6 +13,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -36,7 +38,8 @@ fun CatalogDiscDetailScreen(
 ) {
     val state by vm.ui.collectAsStateWithLifecycle()
     val snack = remember { SnackbarHostState() }
-    if (state.added) LaunchedEffect(Unit) { snack.showSnackbar("Added to your shelf") }
+    if (state.added) LaunchedEffect(state.added) { snack.showSnackbar("Added to your shelf") }
+    if (state.wishlisted) LaunchedEffect(state.wishlisted) { snack.showSnackbar("Added to wishlist") }
 
     Scaffold(
         topBar = {
@@ -63,8 +66,13 @@ fun CatalogDiscDetailScreen(
             disc.yearReleased?.let { Text("Released $it") }
             if (disc.pdgaApproved) Text("PDGA approved", color = MaterialTheme.colorScheme.primary)
             Spacer(Modifier.height(12.dp))
-            Button(onClick = vm::addToShelf, enabled = !state.added) {
-                Text(if (state.added) "Added" else "Add to my shelf")
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Button(onClick = vm::addToShelf, enabled = !state.added) {
+                    Text(if (state.added) "Added" else "Add to my shelf")
+                }
+                OutlinedButton(onClick = vm::addToWishlist, enabled = !state.wishlisted) {
+                    Text(if (state.wishlisted) "On wishlist" else "Add to wishlist")
+                }
             }
         }
     }
