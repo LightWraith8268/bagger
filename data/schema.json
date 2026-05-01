@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/LightWraith8268/bagger/blob/main/data/schema.json",
+  "title": "Bagger Disc Catalog",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "brand", "mold", "speed", "glide", "turn", "fade", "discType", "stability", "pdgaApproved", "schemaVersion"],
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$",
+        "description": "Stable kebab-case slug, brand-mold or brand-mold-variant"
+      },
+      "brand": { "type": "string", "minLength": 1 },
+      "mold": { "type": "string", "minLength": 1 },
+      "speed": { "type": "number", "minimum": 1, "maximum": 15 },
+      "glide": { "type": "number", "minimum": 1, "maximum": 7 },
+      "turn":  { "type": "number", "minimum": -5, "maximum": 1 },
+      "fade":  { "type": "number", "minimum": 0, "maximum": 6 },
+      "discType": {
+        "type": "string",
+        "enum": ["Putter", "Approach", "Mid", "Fairway", "Driver"]
+      },
+      "stability": {
+        "type": "string",
+        "enum": ["overstable", "stable", "understable"]
+      },
+      "pdgaApproved": { "type": "boolean" },
+      "yearReleased": { "type": ["integer", "null"], "minimum": 1970, "maximum": 2100 },
+      "primaryStampUrl": { "type": ["string", "null"], "format": "uri" },
+      "aliases": {
+        "type": "array",
+        "items": { "type": "string" },
+        "default": []
+      },
+      "schemaVersion": { "type": "integer", "const": 1 }
+    }
+  },
+  "minItems": 0,
+  "uniqueItems": false
+}

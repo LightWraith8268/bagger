@@ -54,3 +54,10 @@ __pycache__/
 .venv/
 venv/
 *.egg-info/
+
+# Python data tooling
+data/scripts/.venv/
+data/scripts/**/__pycache__/
+data/scripts/**/*.pyc
+.pytest_cache/
+
