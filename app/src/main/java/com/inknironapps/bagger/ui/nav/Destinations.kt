@@ -21,6 +21,7 @@ object DetailRoutes {
     fun catalogDetail(id: String) = "catalog/$id"
     const val BagDetail = "bag/{bagId}"
     fun bagDetail(id: String) = "bag/$id"
+    const val AddDisc = "add_disc"
 }
 
 val BottomDestinations: List<Destination> = listOf(

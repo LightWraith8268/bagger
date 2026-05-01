@@ -4,6 +4,16 @@ All notable changes to Bagger are documented here. The format follows [Keep a Ch
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-05-01
+
+### Added
+
+- Photo-based disc identification flow. Tap Add disc to open the camera, snap a photo of the disc, and Bagger uses on-device ML Kit text recognition with a Jaro–Winkler matcher to identify the disc against its catalog. Confident matches go straight to a confirmation screen; ambiguous matches present up to five candidates; unrecognized photos fall back to a manual catalog search prefilled with detected text.
+- Disc details form for plastic type, weight, color, condition, and notes — used by both the photo-ID flow and the catalog Add to my shelf action.
+- Local photo storage in app-private directory plus a FileProvider for sharing.
+- Training-data submission queue: when the photo-ID falls back to manual search and the user picks a disc, the photo plus extracted tokens plus confirmed disc id are saved locally, ready for an opt-in cloud upload in a later phase.
+- Unit tests for the matcher (Jaro–Winkler, token extractor, decision engine).
+
 ## [0.4.0] - 2026-05-01
 
 ### Added
