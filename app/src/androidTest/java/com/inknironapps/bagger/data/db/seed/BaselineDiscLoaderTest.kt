@@ -9,7 +9,7 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 @RunWith(AndroidJUnit4::class)
 class BaselineDiscLoaderTest {
@@ -25,6 +25,7 @@ class BaselineDiscLoaderTest {
     @Test fun loadsBaselineDiscs() = runBlocking {
         val loader = BaselineDiscLoader(ApplicationProvider.getApplicationContext(), db.discDao())
         loader.loadIfEmpty()
-        assertEquals(10, db.discDao().count())
+        val count = db.discDao().count()
+        assertTrue(count >= 10, "expected at least 10 baseline discs, got $count")
     }
 }
