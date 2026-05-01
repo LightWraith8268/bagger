@@ -1,3 +1,6 @@
+import java.io.File
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -5,6 +8,14 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin.serialization)
+}
+
+val keystoreFile: File? = rootProject.file("release.keystore").takeIf { it.exists() }
+val keystorePropsFile: File = rootProject.file("keystore.properties")
+val keystoreProps: Properties = Properties().apply {
+    if (keystorePropsFile.exists()) {
+        keystorePropsFile.inputStream().use { load(it) }
+    }
 }
 
 android {
@@ -33,6 +44,15 @@ android {
     }
     kotlinOptions { jvmTarget = "21" }
 
+    signingConfigs {
+        create("release") {
+            storeFile = keystoreFile ?: rootProject.file("release.keystore.placeholder")
+            storePassword = keystoreProps.getProperty("storePassword") ?: System.getenv("KEYSTORE_PASSWORD") ?: ""
+            keyAlias = keystoreProps.getProperty("keyAlias") ?: System.getenv("KEY_ALIAS") ?: ""
+            keyPassword = keystoreProps.getProperty("keyPassword") ?: System.getenv("KEY_PASSWORD") ?: ""
+        }
+    }
+
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"
@@ -42,6 +62,7 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 

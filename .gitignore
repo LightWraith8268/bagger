@@ -23,10 +23,11 @@ local.properties
 *.dex
 *.class
 
-# Keystore / signing
+# Release signing artifacts (NEVER commit)
+release.keystore
+keystore.properties
 *.jks
 *.keystore
-keystore.properties
 
 # Logs
 *.log
