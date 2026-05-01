@@ -4,6 +4,15 @@ All notable changes to Bagger are documented here. The format follows [Keep a Ch
 
 ## [Unreleased]
 
+## [1.0.0-rc.1] - 2026-05-01
+
+### Added
+
+- Release signing pipeline. The release build type now signs with a keystore loaded from either a local `keystore.properties` file or CI environment variables. The GitHub Actions release workflow decodes a base64-encoded keystore secret on every main-branch push and produces a signed AAB artifact.
+- Signing setup guide at `docs/SIGNING_GUIDE.md` covering keystore generation, local builds, CI secrets, Maps API key restriction, and first Play Store submission.
+- Play Store listing assets (`docs/play-store/`) — short and full descriptions, data safety questionnaire answers, and a screenshots placeholder directory.
+- App version bumped to 1.0.0-rc.1 ahead of the first internal-testing track submission.
+
 ## [0.7.0] - 2026-05-01
 
 ### Added
