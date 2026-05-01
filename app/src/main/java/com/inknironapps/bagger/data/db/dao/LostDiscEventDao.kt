@@ -15,4 +15,7 @@ interface LostDiscEventDao {
 
     @Query("SELECT * FROM lost_disc_events WHERE ownedDiscId = :id ORDER BY lostAt DESC")
     fun observeForDisc(id: String): Flow<List<LostDiscEventEntity>>
+
+    @Query("SELECT * FROM lost_disc_events")
+    suspend fun getAllOnce(): List<LostDiscEventEntity>
 }
