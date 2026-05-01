@@ -31,6 +31,9 @@ camerax = "1.4.1"
 mlkit-text-recognition = "16.0.1"
 coil = "2.7.0"
 accompanist-permissions = "0.36.0"
+maps-compose = "6.4.4"
+play-services-maps = "19.0.0"
+play-services-location = "21.3.0"
 
 [libraries]
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
@@ -94,6 +97,9 @@ camerax-view = { module = "androidx.camera:camera-view", version.ref = "camerax"
 mlkit-text-recognition = { module = "com.google.mlkit:text-recognition", version.ref = "mlkit-text-recognition" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist-permissions" }
+maps-compose = { module = "com.google.maps.android:maps-compose", version.ref = "maps-compose" }
+play-services-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "play-services-maps" }
+play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "play-services-location" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
