@@ -1,0 +1,19 @@
+Bagger turns your phone into a smart inventory for your disc-golf bag.
+
+Snap a photo of any disc and Bagger identifies it from a catalog of popular molds, capturing the brand, mold, and flight numbers automatically. Don't recognize the disc? Search the catalog manually — your fallback always works.
+
+Features:
+
+- Photo identification powered by on-device machine learning. No cloud uploads, no accounts, no telemetry.
+- Multiple bags. Organize discs into named bags ("Tournament", "Wooded course", "Beginner loaner") and move them around as your loadout changes.
+- Full lifecycle tracking. Mark discs as in your bag, on your shelf, lost, found, sold, traded, retired, or gifted.
+- Lost disc map. Pin lost discs on a map with optional GPS, course name, and hole number — see at a glance where you've lost what.
+- Wishlist. Add discs you want to buy and convert them to owned discs in one tap when you pick them up.
+- Compare flights side by side. Pick two or three discs and overlay their projected flight paths on the same chart.
+- Stats. Inventory totals, brand and disc-type breakdowns, lost-this-year count, retired count.
+- Local backup. Export your entire collection to JSON or CSV with the system file picker. Restore from JSON on a new device.
+- Material 3 design with light, dark, and system theme support.
+
+Bagger is open source under the GNU GPLv3 and built by Ink and Iron Apps.
+
+Privacy: All data stays on your device unless you manually export a backup.
