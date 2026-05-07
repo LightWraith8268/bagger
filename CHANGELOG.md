@@ -4,6 +4,19 @@ All notable changes to Bagger are documented here. The format follows [Keep a Ch
 
 ## [Unreleased]
 
+## [1.0.0-rc.2] - 2026-05-06
+
+### Changed
+
+- Settings screen email rows now route to the correct addresses per the brand routing table: Send feedback and Report a bug send to `support@inknironapps.com` with subject and version pre-filled, Report security issue sends to `security@inknironapps.com`. Privacy policy and terms links now point at `https://inknironapps.com/privacy-policy.html` and `https://inknironapps.com/terms.html`.
+- The app now draws content edge-to-edge under the system status and navigation bars, using the modern `enableEdgeToEdge()` API instead of the deprecated `Window.statusBarColor` setter.
+- Re-enabled KSP2 now that Hilt 2.54 supports it, for faster annotation processing.
+
+### Added
+
+- Photo carousel on the owned disc detail screen. Tap Add photo to pick from your gallery; photos are stored privately to the app's data directory and never leave the device.
+- The disc identification flow now extracts a dominant color from the center of each captured photo and pre-fills the color field of the details form with the matching hex value.
+
 ## [1.0.0-rc.1] - 2026-05-01
 
 ### Added

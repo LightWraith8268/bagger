@@ -9,6 +9,7 @@ import com.inknironapps.bagger.data.db.dao.DiscDbMetaDao
 import com.inknironapps.bagger.data.db.dao.IdSubmissionQueueDao
 import com.inknironapps.bagger.data.db.dao.LostDiscEventDao
 import com.inknironapps.bagger.data.db.dao.OwnedDiscDao
+import com.inknironapps.bagger.data.db.dao.OwnedDiscPhotoDao
 import com.inknironapps.bagger.data.db.dao.WishlistDao
 import com.inknironapps.bagger.data.db.entity.BagEntity
 import com.inknironapps.bagger.data.db.entity.DiscDbMetaEntity
@@ -37,6 +38,7 @@ import com.inknironapps.bagger.data.db.entity.WishlistItemEntity
 abstract class BaggerDatabase : RoomDatabase() {
     abstract fun discDao(): DiscDao
     abstract fun ownedDiscDao(): OwnedDiscDao
+    abstract fun ownedDiscPhotoDao(): OwnedDiscPhotoDao
     abstract fun bagDao(): BagDao
     abstract fun lostDiscEventDao(): LostDiscEventDao
     abstract fun wishlistDao(): WishlistDao
