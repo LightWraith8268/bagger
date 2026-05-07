@@ -180,7 +180,7 @@ fun SettingsScreen(onBack: () -> Unit, vm: SettingsViewModel = hiltViewModel()) 
                         context.startActivity(
                             Intent(
                                 Intent.ACTION_VIEW,
-                                "https://lightwraith8268.github.io/inknironapps-legal/privacy-policy.html".toUri()
+                                "https://inknironapps.com/privacy-policy.html".toUri()
                             )
                         )
                     }
@@ -191,23 +191,34 @@ fun SettingsScreen(onBack: () -> Unit, vm: SettingsViewModel = hiltViewModel()) 
                         context.startActivity(
                             Intent(
                                 Intent.ACTION_VIEW,
-                                "https://lightwraith8268.github.io/inknironapps-legal/terms.html".toUri()
+                                "https://inknironapps.com/terms.html".toUri()
                             )
                         )
                     }
                 )
-                ListItem(
-                    headlineContent = { Text("Send feedback") },
-                    modifier = Modifier.clickable {
-                        val mail = Intent(Intent.ACTION_SENDTO).apply {
-                            data = "mailto:info@inknironapps.com".toUri()
-                            putExtra(
-                                Intent.EXTRA_SUBJECT,
-                                "Bagger feedback (v${state.versionName})"
-                            )
-                        }
-                        context.startActivity(mail)
-                    }
+                MailtoRow(
+                    label = "Send feedback",
+                    address = "support@inknironapps.com",
+                    subject = "Bagger feedback",
+                    body = "Version: ${state.versionName}\n\n",
+                    context = context,
+                    onError = { snackMessage = it }
+                )
+                MailtoRow(
+                    label = "Report a bug",
+                    address = "support@inknironapps.com",
+                    subject = "Bagger bug report",
+                    body = "Version: ${state.versionName}\nAndroid: ${android.os.Build.VERSION.SDK_INT}\n\n",
+                    context = context,
+                    onError = { snackMessage = it }
+                )
+                MailtoRow(
+                    label = "Report security issue",
+                    address = "security@inknironapps.com",
+                    subject = "Bagger security",
+                    body = "Version: ${state.versionName}\n\n",
+                    context = context,
+                    onError = { snackMessage = it }
                 )
 
                 ListItem(
@@ -251,6 +262,32 @@ fun SettingsScreen(onBack: () -> Unit, vm: SettingsViewModel = hiltViewModel()) 
             )
         }
     }
+}
+
+@Composable
+private fun MailtoRow(
+    label: String,
+    address: String,
+    subject: String,
+    body: String,
+    context: android.content.Context,
+    onError: (String) -> Unit
+) {
+    val encodedSubject = java.net.URLEncoder.encode(subject, "UTF-8").replace("+", "%20")
+    val encodedBody = java.net.URLEncoder.encode(body, "UTF-8").replace("+", "%20")
+    ListItem(
+        headlineContent = { Text(label) },
+        modifier = Modifier.clickable {
+            val intent = Intent(Intent.ACTION_SENDTO).apply {
+                data = "mailto:$address?subject=$encodedSubject&body=$encodedBody".toUri()
+            }
+            try {
+                context.startActivity(intent)
+            } catch (_: android.content.ActivityNotFoundException) {
+                onError("No email app installed.")
+            }
+        }
+    )
 }
 
 @Composable
