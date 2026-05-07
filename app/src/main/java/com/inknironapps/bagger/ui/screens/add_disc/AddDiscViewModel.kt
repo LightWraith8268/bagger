@@ -12,6 +12,7 @@ import com.inknironapps.bagger.data.db.entity.OwnedDiscEntity
 import com.inknironapps.bagger.data.photo.PhotoStorage
 import com.inknironapps.bagger.domain.repo.DiscCatalogRepository
 import com.inknironapps.bagger.domain.repo.OwnedDiscRepository
+import com.inknironapps.bagger.ml.ColorExtractor
 import com.inknironapps.bagger.ml.DiscMatcher
 import com.inknironapps.bagger.ml.MatchResult
 import com.inknironapps.bagger.ml.ScoredDisc
@@ -40,6 +41,7 @@ data class AddDiscState(
     val plasticType: String = "",
     val weight: String = "",
     val color: String = "",
+    val dominantColorHex: String? = null,
     val condition: String = "Good",
     val notes: String = "",
     val isOriginalOwner: Boolean = true,
@@ -66,6 +68,12 @@ class AddDiscViewModel @Inject constructor(
             try {
                 val bitmap = photoStorage.loadBitmap(file.absolutePath)
                     ?: throw IllegalStateException("decode failed")
+                val dominant = ColorExtractor.extractCenter(bitmap)
+                val dominantHex = dominant.toHex()
+                _state.value = _state.value.copy(
+                    dominantColorHex = dominantHex,
+                    color = dominantHex
+                )
                 val image = InputImage.fromBitmap(bitmap, 0)
                 val text = recognizeText(image)
                 val tokens = TokenExtractor.extract(text)
