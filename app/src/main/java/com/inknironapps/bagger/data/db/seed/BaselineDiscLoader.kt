@@ -31,7 +31,10 @@ class BaselineDiscLoader @Inject constructor(
                 stability = o.getString("stability"),
                 pdgaApproved = o.getBoolean("pdgaApproved"),
                 yearReleased = if (o.isNull("yearReleased")) null else o.getInt("yearReleased"),
-                primaryStampUrl = if (o.isNull("primaryStampUrl")) null else o.getString("primaryStampUrl")
+                primaryStampUrl = if (o.isNull("primaryStampUrl")) null else o.getString("primaryStampUrl"),
+                maxWeightG = if (o.has("maxWeightG") && !o.isNull("maxWeightG")) o.getDouble("maxWeightG").toFloat() else null,
+                diameterCm = if (o.has("diameterCm") && !o.isNull("diameterCm")) o.getDouble("diameterCm").toFloat() else null,
+                discClass = if (o.has("discClass") && !o.isNull("discClass")) o.getString("discClass") else null
             )
         }
         discDao.upsertAll(discs)

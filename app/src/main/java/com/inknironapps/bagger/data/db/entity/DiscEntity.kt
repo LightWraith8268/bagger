@@ -16,5 +16,8 @@ data class DiscEntity(
     val stability: String,
     val pdgaApproved: Boolean,
     val yearReleased: Int?,
-    val primaryStampUrl: String?
+    val primaryStampUrl: String?,
+    val maxWeightG: Float? = null,
+    val diameterCm: Float? = null,
+    val discClass: String? = null
 )

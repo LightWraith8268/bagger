@@ -26,7 +26,7 @@ class DiscDbSyncWorker @AssistedInject constructor(
         @Volatile
         var DISCS_URL: String =
             "https://raw.githubusercontent.com/LightWraith8268/bagger/main/data/discs.json"
-        const val SUPPORTED_SCHEMA_VERSION = 1
+        const val SUPPORTED_SCHEMA_VERSION = 2
     }
 
     override suspend fun doWork(): Result = runCatching {
@@ -84,6 +84,9 @@ class DiscDbSyncWorker @AssistedInject constructor(
         discType = discType, stability = stability,
         pdgaApproved = pdgaApproved,
         yearReleased = yearReleased,
-        primaryStampUrl = primaryStampUrl
+        primaryStampUrl = primaryStampUrl,
+        maxWeightG = maxWeightG,
+        diameterCm = diameterCm,
+        discClass = discClass
     )
 }

@@ -3,6 +3,7 @@ package com.inknironapps.bagger.di
 import android.content.Context
 import androidx.room.Room
 import com.inknironapps.bagger.data.db.BaggerDatabase
+import com.inknironapps.bagger.data.db.migrations.MIGRATION_1_2
 import com.inknironapps.bagger.data.db.dao.BagDao
 import com.inknironapps.bagger.data.db.dao.DiscDao
 import com.inknironapps.bagger.data.db.dao.DiscDbMetaDao
@@ -25,6 +26,7 @@ object DatabaseModule {
     @Provides @Singleton
     fun provideDatabase(@ApplicationContext context: Context): BaggerDatabase =
         Room.databaseBuilder(context, BaggerDatabase::class.java, "bagger.db")
+            .addMigrations(MIGRATION_1_2)
             .fallbackToDestructiveMigrationOnDowngrade(true)
             .build()
 

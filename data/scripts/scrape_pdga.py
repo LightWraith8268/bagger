@@ -99,6 +99,48 @@ def _extract_detail_url(mold_cell) -> str | None:
     return f"{PDGA_ORIGIN}{href}"
 
 
+def _parse_float(text: str, suffix: str = "") -> float | None:
+    if not text:
+        return None
+    cleaned = text.replace(suffix, "").strip()
+    try:
+        return float(cleaned.split()[0])
+    except (ValueError, IndexError):
+        return None
+
+
+def fetch_detail_page(detail_url: str, session: requests.Session) -> dict:
+    """Pull max weight, diameter, and disc class from a PDGA disc detail page.
+
+    Returns a dict with keys max_weight_g, diameter_cm, disc_class — values
+    are floats / strings or None if the corresponding spec row was absent.
+    """
+    out = {"max_weight_g": None, "diameter_cm": None, "disc_class": None}
+    resp = session.get(detail_url, timeout=30)
+    resp.raise_for_status()
+    soup = BeautifulSoup(resp.text, "lxml")
+    selectors = [
+        "div.field-name-field-disc-class-tax",
+        "div.field-name-field-maximum-weight",
+        "div.field-name-field-diameter",
+    ]
+    for selector in selectors:
+        for row in soup.select(selector):
+            label_el = row.select_one(".field-label")
+            value_el = row.select_one(".field-item")
+            if not label_el or not value_el:
+                continue
+            label = label_el.get_text(strip=True).lower().rstrip(":")
+            value = value_el.get_text(strip=True)
+            if "class" in label:
+                out["disc_class"] = value
+            elif "weight" in label:
+                out["max_weight_g"] = _parse_float(value, " g")
+            elif "diameter" in label:
+                out["diameter_cm"] = _parse_float(value, " cm")
+    return out
+
+
 def fetch_all_pages(start_page: int = 0, max_pages: int = 100) -> Iterable[str]:
     """Yield raw HTML for each paginated PDGA results page until empty."""
     session = requests.Session()
@@ -118,12 +160,31 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--max-pages", type=int, default=100)
     parser.add_argument("--output", type=Path, default=INTERMEDIATE / "pdga_raw.json")
+    parser.add_argument(
+        "--hydrate",
+        action="store_true",
+        help="Fetch each disc's detail page for max weight, diameter, and class (slow).",
+    )
     args = parser.parse_args()
 
     INTERMEDIATE.mkdir(parents=True, exist_ok=True)
     all_rows: list[dict] = []
+    session = requests.Session()
+    session.headers["User-Agent"] = USER_AGENT
     for html in fetch_all_pages(max_pages=args.max_pages):
-        all_rows.extend(parse_pdga_table(html))
+        rows = parse_pdga_table(html)
+        if args.hydrate:
+            for row in rows:
+                detail_url = row.get("detail_url")
+                if not detail_url:
+                    continue
+                try:
+                    detail = fetch_detail_page(detail_url, session)
+                    row.update(detail)
+                except Exception as exc:
+                    print(f"detail fetch failed for {detail_url}: {exc}")
+                time.sleep(SLEEP_SECONDS)
+        all_rows.extend(rows)
 
     args.output.write_text(json.dumps(all_rows, indent=2, ensure_ascii=False))
     print(f"Wrote {len(all_rows)} discs to {args.output}")

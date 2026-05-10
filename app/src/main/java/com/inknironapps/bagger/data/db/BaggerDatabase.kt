@@ -31,7 +31,7 @@ import com.inknironapps.bagger.data.db.entity.WishlistItemEntity
         DiscDbMetaEntity::class,
         IdSubmissionQueueEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = true
 )
 @TypeConverters(Converters::class)
