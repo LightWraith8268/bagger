@@ -2,7 +2,9 @@ package com.inknironapps.bagger.ui.screens.disc_detail
 
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -15,6 +17,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -24,6 +27,7 @@ import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -33,13 +37,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
+import com.inknironapps.bagger.ui.components.CameraCapture
 import com.inknironapps.bagger.ui.components.FlightNumbersRow
 import com.inknironapps.bagger.ui.components.PhotoLightbox
 import com.inknironapps.bagger.ui.screens.lost_map.MarkLostDialog
@@ -55,6 +64,7 @@ fun OwnedDiscDetailScreen(
     var showBagPicker by remember { mutableStateOf(false) }
     var showLostDialog by remember { mutableStateOf(false) }
     var lightboxPath by remember { mutableStateOf<String?>(null) }
+    var showCamera by remember { mutableStateOf(false) }
 
     val addPhotoLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.GetContent()
@@ -130,7 +140,12 @@ fun OwnedDiscDetailScreen(
                     FilledTonalButton(onClick = { vm.changeState("Retired") }) { Text("Retired") }
                 }
                 Spacer(Modifier.height(8.dp))
-                Button(onClick = { addPhotoLauncher.launch("image/*") }) { Text("Add photo") }
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    OutlinedButton(onClick = { addPhotoLauncher.launch("image/*") }) {
+                        Text("Pick from gallery")
+                    }
+                    Button(onClick = { showCamera = true }) { Text("Take photo") }
+                }
             }
         }
 
@@ -145,6 +160,28 @@ fun OwnedDiscDetailScreen(
         }
 
         PhotoLightbox(photoPath = lightboxPath, onDismiss = { lightboxPath = null })
+
+        if (showCamera) {
+            Dialog(
+                onDismissRequest = { showCamera = false },
+                properties = DialogProperties(usePlatformDefaultWidth = false)
+            ) {
+                Box(Modifier.fillMaxSize().background(Color.Black)) {
+                    CameraCapture(
+                        onPhoto = { file ->
+                            vm.addPhotoFromFile(file)
+                            showCamera = false
+                        }
+                    )
+                    IconButton(
+                        onClick = { showCamera = false },
+                        modifier = Modifier.align(Alignment.TopEnd).padding(16.dp)
+                    ) {
+                        Icon(Icons.Filled.Close, "Close", tint = Color.White)
+                    }
+                }
+            }
+        }
 
         if (showBagPicker) {
             AlertDialog(
