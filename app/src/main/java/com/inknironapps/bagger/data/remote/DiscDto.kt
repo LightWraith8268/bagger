@@ -17,5 +17,8 @@ data class DiscDto(
     val yearReleased: Int? = null,
     val primaryStampUrl: String? = null,
     val aliases: List<String> = emptyList(),
-    val schemaVersion: Int = 1
+    val maxWeightG: Float? = null,
+    val diameterCm: Float? = null,
+    val discClass: String? = null,
+    val schemaVersion: Int = 2
 )

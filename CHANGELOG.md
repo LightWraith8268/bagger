@@ -4,6 +4,24 @@ All notable changes to Bagger are documented here. The format follows [Keep a Ch
 
 ## [Unreleased]
 
+## [1.0.0-rc.3] - 2026-05-10
+
+### Added
+
+- Real Ink and Iron Apps launcher icon shipping in all five display densities, replacing the placeholder vector.
+- Photo lightbox: tap any photo on a disc detail screen to view it full-screen with pinch to zoom and tap-to-dismiss.
+- Take photo button on the owned disc detail screen alongside the existing Pick from gallery — captures via CameraX into the same per-disc photo collection.
+
+### Changed
+
+- Disc catalog schema bumped to version 2. New optional fields: max weight in grams, diameter in centimeters, and disc class string sourced from PDGA per-disc detail pages. The app reads both v1 and v2 catalog feeds.
+- Local database migrates from v1 to v2 automatically on first launch after upgrade, adding three nullable columns to the discs table.
+- Continuous delivery: the auto-merge workflow now dispatches the release build workflow against the freshly-merged main branch, so signed AAB artifacts are produced for every claude/dev push without a manual workflow dispatch.
+
+### Other
+
+- Per-manufacturer scrapers iterated against real sites where tractable; Innova now has a working implementation. Brands that require JavaScript rendering or whose canonical catalog URLs return 404 remain stubs with TODO markers describing the specific blocker observed.
+
 ## [1.0.0-rc.2] - 2026-05-06
 
 ### Changed

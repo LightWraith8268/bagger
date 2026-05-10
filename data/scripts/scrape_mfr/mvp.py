@@ -48,7 +48,7 @@ class MvpScraper(MfrScraper):
     INDEX_URL = "https://mvpdiscsports.com/disc-models/"
 
     def scrape(self) -> Iterable[MfrDisc]:
-        # Stub: live HTML structure unknown at implementation time.
+        # TODO(scraper): mvpdiscsports.com /collections/discs returns 404. /products.json also 404. Site may have moved or be JS-rendered.
         return []
 
 

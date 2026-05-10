@@ -69,7 +69,7 @@ def test_enrich_joins_pdga_with_mfr():
         assert d["discType"] == "Driver"
         assert d["stability"] == "overstable"
         assert d["yearReleased"] == 2008
-        assert d["schemaVersion"] == 1
+        assert d["schemaVersion"] == 2
 
 
 def test_enrich_uses_manual_override_for_full_disc():
@@ -95,7 +95,7 @@ def test_enrich_uses_manual_override_for_full_disc():
         assert out[0]["id"] == "innova-aviar"
         assert out[0]["discType"] == "Putter"
         assert out[0]["pdgaApproved"] is False  # default when not in PDGA
-        assert out[0]["schemaVersion"] == 1
+        assert out[0]["schemaVersion"] == 2
 
 
 def test_manual_override_patches_existing_disc():

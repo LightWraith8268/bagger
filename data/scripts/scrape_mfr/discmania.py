@@ -53,7 +53,7 @@ class DiscmaniaScraper(MfrScraper):
     INDEX_URL = "https://discmania.net/collections/all-discs"
 
     def scrape(self) -> Iterable[MfrDisc]:
-        # Stub: live HTML structure unknown at implementation time.
+        # TODO(scraper): canonical URLs (/collections/discs, /collections/all) return 404. Site appears to be Shopify but with stripped public catalog. Real impl needs sitemap discovery.
         return []
 
 

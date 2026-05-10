@@ -48,7 +48,7 @@ class ProdigyScraper(MfrScraper):
     INDEX_URL = "https://www.prodigydisc.com/collections/discs"
 
     def scrape(self) -> Iterable[MfrDisc]:
-        # Stub: live HTML structure unknown at implementation time.
+        # TODO(scraper): prodigydisc.com /collections/discs returns 404. /products.json returns 200 with 30 products but flight numbers are not in body_html.
         return []
 
 

@@ -35,7 +35,10 @@
         "items": { "type": "string" },
         "default": []
       },
-      "schemaVersion": { "type": "integer", "const": 1 }
+      "maxWeightG": { "type": ["number", "null"], "minimum": 100, "maximum": 250 },
+      "diameterCm": { "type": ["number", "null"], "minimum": 15, "maximum": 25 },
+      "discClass": { "type": ["string", "null"] },
+      "schemaVersion": { "type": "integer", "minimum": 1, "maximum": 2 }
     }
   },
   "minItems": 0,

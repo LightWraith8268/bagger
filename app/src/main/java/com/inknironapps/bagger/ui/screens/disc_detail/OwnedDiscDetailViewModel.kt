@@ -26,6 +26,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import java.io.File
 import java.util.UUID
 import javax.inject.Inject
 
@@ -118,6 +119,20 @@ class OwnedDiscDetailViewModel @Inject constructor(
                 )
             } catch (_: Exception) {
             }
+        }
+    }
+
+    fun addPhotoFromFile(file: File, type: String = "Front") {
+        viewModelScope.launch {
+            photoRepo.upsert(
+                OwnedDiscPhotoEntity(
+                    id = UUID.randomUUID().toString(),
+                    ownedDiscId = ownedId,
+                    localPath = file.absolutePath,
+                    type = type,
+                    capturedAt = System.currentTimeMillis()
+                )
+            )
         }
     }
 

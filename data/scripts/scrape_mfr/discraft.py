@@ -3,6 +3,13 @@
 Stub implementation: parser handles the fixture markup. Live scraping
 against discraft.com requires updating the parser to match the real
 site's actual HTML structure (selectors below are placeholders).
+
+TODO(scraper): discraft.com (Sana Commerce backend) returns 404 on
+/collections/all-discs and /discs/. A real impl needs to discover the
+correct catalog URL and per-product flight-number markup. Probed
+2026-05-10: canonical URLs returned 404 with Sana 404 chrome; no /products
+pattern. Likely needs an authenticated browser session or alternate
+discovery (XML sitemap, Algolia search index).
 """
 
 from __future__ import annotations
@@ -55,7 +62,9 @@ class DiscraftScraper(MfrScraper):
     INDEX_URL = "https://www.discraft.com/collections/all-discs"
 
     def scrape(self) -> Iterable[MfrDisc]:
-        # Stub: live HTML structure unknown at implementation time.
+        # TODO(scraper): live site uses Sana Commerce; canonical disc
+        # listing URL unknown. Returns empty until a working entry point
+        # is identified. See module docstring.
         return []
 
 

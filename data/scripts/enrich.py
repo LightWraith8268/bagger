@@ -144,7 +144,10 @@ def enrich(root: Path) -> list[dict]:
             "yearReleased": _parse_year(p.get("approved_date")),
             "primaryStampUrl": m.get("stamp_url"),
             "aliases": m.get("aliases", []),
-            "schemaVersion": 1,
+            "maxWeightG": p.get("max_weight_g"),
+            "diameterCm": p.get("diameter_cm"),
+            "discClass": p.get("disc_class"),
+            "schemaVersion": 2,
         })
         seen_ids.add(disc_id)
 
@@ -181,7 +184,10 @@ def enrich(root: Path) -> list[dict]:
                 "yearReleased": ov.get("yearReleased"),
                 "primaryStampUrl": ov.get("primaryStampUrl"),
                 "aliases": ov.get("aliases", []),
-                "schemaVersion": 1,
+                "maxWeightG": ov.get("maxWeightG"),
+                "diameterCm": ov.get("diameterCm"),
+                "discClass": ov.get("discClass"),
+                "schemaVersion": 2,
             }
             out_by_id[oid] = record
 

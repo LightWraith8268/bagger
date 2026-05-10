@@ -47,7 +47,7 @@ class Latitude64Scraper(MfrScraper):
     INDEX_URL = "https://latitude64.se/disc-golf/discs/"
 
     def scrape(self) -> Iterable[MfrDisc]:
-        # Stub: live HTML structure unknown at implementation time.
+        # TODO(scraper): root domain redirects from latitude64.se to latitude64.com (Shopify). /collections/discs returns 200 with 1.5MB of product links; /products.json gives 30 products with handles but flight numbers are not in body_html. Real impl needs per-product page scraping with selectors yet to be identified.
         return []
 
 
