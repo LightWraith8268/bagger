@@ -41,6 +41,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.inknironapps.bagger.ui.components.FlightNumbersRow
+import com.inknironapps.bagger.ui.components.PhotoLightbox
 import com.inknironapps.bagger.ui.screens.lost_map.MarkLostDialog
 import java.io.File
 
@@ -53,6 +54,7 @@ fun OwnedDiscDetailScreen(
     val state by vm.ui.collectAsStateWithLifecycle()
     var showBagPicker by remember { mutableStateOf(false) }
     var showLostDialog by remember { mutableStateOf(false) }
+    var lightboxPath by remember { mutableStateOf<String?>(null) }
 
     val addPhotoLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.GetContent()
@@ -89,7 +91,10 @@ fun OwnedDiscDetailScreen(
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     items(state.photos, key = { it.id }) { photo ->
-                        Card(modifier = Modifier.size(width = 160.dp, height = 160.dp)) {
+                        Card(
+                            modifier = Modifier.size(width = 160.dp, height = 160.dp),
+                            onClick = { lightboxPath = photo.localPath }
+                        ) {
                             AsyncImage(
                                 model = File(photo.localPath),
                                 contentDescription = null,
@@ -138,6 +143,8 @@ fun OwnedDiscDetailScreen(
                 }
             )
         }
+
+        PhotoLightbox(photoPath = lightboxPath, onDismiss = { lightboxPath = null })
 
         if (showBagPicker) {
             AlertDialog(
