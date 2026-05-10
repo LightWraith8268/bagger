@@ -12,6 +12,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  actions: write
 
 jobs:
   auto-merge:
@@ -51,3 +52,10 @@ jobs:
           git fetch origin main
           git checkout -B claude/dev origin/main
           git push origin claude/dev --force-with-lease
+
+      - name: Trigger release build on main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run release.yml --ref main
+          echo "Release build dispatched."
