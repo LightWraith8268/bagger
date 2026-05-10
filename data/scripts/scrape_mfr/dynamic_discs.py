@@ -53,7 +53,7 @@ class DynamicDiscsScraper(MfrScraper):
     INDEX_URL = "https://www.dynamicdiscs.com/discs/"
 
     def scrape(self) -> Iterable[MfrDisc]:
-        # Stub: live HTML structure unknown at implementation time.
+        # TODO(scraper): canonical /collections/discs returns 404 with Shopify chrome. /products.json returns 200 with 30 products per page but flight numbers are not in body_html — they live on per-product pages with site-specific markup that needs reverse-engineering.
         return []
 
 

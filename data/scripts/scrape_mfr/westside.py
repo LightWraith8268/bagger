@@ -48,7 +48,7 @@ class WestsideScraper(MfrScraper):
     INDEX_URL = "https://westsidediscs.com/disc-golf/discs/"
 
     def scrape(self) -> Iterable[MfrDisc]:
-        # Stub: live HTML structure unknown at implementation time.
+        # TODO(scraper): westsidediscgolf.com fails DNS resolution as of 2026-05-10. Brand may have rebranded under the Latitude64 / Dynamic Discs umbrella; check trilogy distribution.
         return []
 
 
