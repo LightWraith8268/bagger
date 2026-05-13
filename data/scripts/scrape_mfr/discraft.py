@@ -1,23 +1,15 @@
-"""Discraft flight-number scraper.
-
-Stub implementation: parser handles the fixture markup. Live scraping
-against discraft.com requires updating the parser to match the real
-site's actual HTML structure (selectors below are placeholders).
-
-TODO(scraper): discraft.com (Sana Commerce backend) returns 404 on
-/collections/all-discs and /discs/. A real impl needs to discover the
-correct catalog URL and per-product flight-number markup. Probed
-2026-05-10: canonical URLs returned 404 with Sana 404 chrome; no /products
-pattern. Likely needs an authenticated browser session or alternate
-discovery (XML sitemap, Algolia search index).
+"""Discraft — main discraft.com is Sana Commerce (no public products.json),
+but factorystore.discraft.com is Shopify w/ a usable catalog. Real scrape
+uses the factory store. Fixture-driven `parse_discraft_disc_page` covers
+test parsing; live scrape uses ShopifyDiscScraper.
 """
 
 from __future__ import annotations
-from typing import Iterable
 
 from bs4 import BeautifulSoup
 
-from scrape_mfr.base import MfrScraper, MfrDisc
+from scrape_mfr.base import MfrDisc
+from scrape_mfr.shopify_base import ShopifyDiscScraper
 
 
 def parse_discraft_disc_page(html: str) -> MfrDisc:
@@ -56,16 +48,10 @@ def _to_float(text: str) -> float:
         return 0.0
 
 
-class DiscraftScraper(MfrScraper):
+class DiscraftScraper(ShopifyDiscScraper):
     brand_slug = "discraft"
     brand_display = "Discraft"
-    INDEX_URL = "https://www.discraft.com/collections/all-discs"
-
-    def scrape(self) -> Iterable[MfrDisc]:
-        # TODO(scraper): live site uses Sana Commerce; canonical disc
-        # listing URL unknown. Returns empty until a working entry point
-        # is identified. See module docstring.
-        return []
+    shopify_origin = "https://factorystore.discraft.com"
 
 
 if __name__ == "__main__":

@@ -6,11 +6,11 @@ site's actual HTML structure (selectors below are placeholders).
 """
 
 from __future__ import annotations
-from typing import Iterable
 
 from bs4 import BeautifulSoup
 
-from scrape_mfr.base import MfrScraper, MfrDisc
+from scrape_mfr.base import MfrDisc
+from scrape_mfr.shopify_base import ShopifyDiscScraper
 
 
 def parse_dynamic_discs_disc_page(html: str) -> MfrDisc:
@@ -47,14 +47,10 @@ def _num(scope, selector: str) -> float:
         return 0.0
 
 
-class DynamicDiscsScraper(MfrScraper):
+class DynamicDiscsScraper(ShopifyDiscScraper):
     brand_slug = "dynamic_discs"
     brand_display = "Dynamic Discs"
-    INDEX_URL = "https://www.dynamicdiscs.com/discs/"
-
-    def scrape(self) -> Iterable[MfrDisc]:
-        # TODO(scraper): canonical /collections/discs returns 404 with Shopify chrome. /products.json returns 200 with 30 products per page but flight numbers are not in body_html — they live on per-product pages with site-specific markup that needs reverse-engineering.
-        return []
+    shopify_origin = "https://dynamicdiscs.com"
 
 
 if __name__ == "__main__":

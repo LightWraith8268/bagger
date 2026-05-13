@@ -6,11 +6,11 @@ site's actual HTML structure (selectors below are placeholders).
 """
 
 from __future__ import annotations
-from typing import Iterable
 
 from bs4 import BeautifulSoup
 
-from scrape_mfr.base import MfrScraper, MfrDisc
+from scrape_mfr.base import MfrDisc
+from scrape_mfr.shopify_base import ShopifyDiscScraper
 
 
 def parse_discmania_disc_page(html: str) -> MfrDisc:
@@ -47,14 +47,10 @@ def _stat(scope, name: str) -> float:
         return 0.0
 
 
-class DiscmaniaScraper(MfrScraper):
+class DiscmaniaScraper(ShopifyDiscScraper):
     brand_slug = "discmania"
     brand_display = "Discmania"
-    INDEX_URL = "https://discmania.net/collections/all-discs"
-
-    def scrape(self) -> Iterable[MfrDisc]:
-        # TODO(scraper): canonical URLs (/collections/discs, /collections/all) return 404. Site appears to be Shopify but with stripped public catalog. Real impl needs sitemap discovery.
-        return []
+    shopify_origin = "https://discmaniagolf.com"
 
 
 if __name__ == "__main__":

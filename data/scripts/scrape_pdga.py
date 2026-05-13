@@ -186,7 +186,7 @@ def main() -> None:
                 time.sleep(SLEEP_SECONDS)
         all_rows.extend(rows)
 
-    args.output.write_text(json.dumps(all_rows, indent=2, ensure_ascii=False))
+    args.output.write_text(json.dumps(all_rows, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"Wrote {len(all_rows)} discs to {args.output}")
 
 

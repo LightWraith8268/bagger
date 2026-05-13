@@ -67,7 +67,7 @@ class MfrScraper:
         MFR_INTERMEDIATE.mkdir(parents=True, exist_ok=True)
         output = MFR_INTERMEDIATE / f"{self.brand_slug}.json"
         rows = [asdict(d) for d in discs]
-        output.write_text(json.dumps(rows, indent=2, ensure_ascii=False))
+        output.write_text(json.dumps(rows, indent=2, ensure_ascii=False), encoding="utf-8")
         return output
 
     def run(self) -> None:

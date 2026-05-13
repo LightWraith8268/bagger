@@ -1,16 +1,17 @@
-"""Latitude 64 flight-number scraper.
+"""Latitude 64 — Shopify storefront at latitude64.com.
 
-Stub implementation: parser handles the fixture markup. Live scraping
-against latitude64.se requires updating the parser to match the real
-site's actual HTML structure (selectors below are placeholders).
+Fixture-driven `parse_latitude64_disc_page` for tests. Live scraping uses
+ShopifyDiscScraper which fetches /products.json then each product detail
+page and regex-extracts flight numbers.
 """
 
 from __future__ import annotations
-from typing import Iterable
+import re
 
 from bs4 import BeautifulSoup
 
-from scrape_mfr.base import MfrScraper, MfrDisc
+from scrape_mfr.base import MfrDisc
+from scrape_mfr.shopify_base import ShopifyDiscScraper
 
 
 def parse_latitude64_disc_page(html: str) -> MfrDisc:
@@ -41,14 +42,10 @@ def parse_latitude64_disc_page(html: str) -> MfrDisc:
     )
 
 
-class Latitude64Scraper(MfrScraper):
+class Latitude64Scraper(ShopifyDiscScraper):
     brand_slug = "latitude64"
     brand_display = "Latitude 64"
-    INDEX_URL = "https://latitude64.se/disc-golf/discs/"
-
-    def scrape(self) -> Iterable[MfrDisc]:
-        # TODO(scraper): root domain redirects from latitude64.se to latitude64.com (Shopify). /collections/discs returns 200 with 1.5MB of product links; /products.json gives 30 products with handles but flight numbers are not in body_html. Real impl needs per-product page scraping with selectors yet to be identified.
-        return []
+    shopify_origin = "https://latitude64.com"
 
 
 if __name__ == "__main__":

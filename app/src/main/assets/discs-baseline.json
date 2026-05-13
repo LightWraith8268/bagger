@@ -15,7 +15,10 @@
     "aliases": [
       "Aviar3"
     ],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "innova-destroyer",
@@ -34,7 +37,10 @@
       "Star Destroyer",
       "Champion Destroyer"
     ],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "innova-leopard",
@@ -52,7 +58,10 @@
     "aliases": [
       "Leopard3"
     ],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "innova-roc",
@@ -71,7 +80,10 @@
       "Roc3",
       "Big Z Roc"
     ],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "innova-teebird",
@@ -89,7 +101,10 @@
     "aliases": [
       "Teebird3"
     ],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "innova-wraith",
@@ -105,7 +120,10 @@
     "yearReleased": 2007,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "innova-firebird",
@@ -121,7 +139,10 @@
     "yearReleased": 1999,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "discraft-buzzz",
@@ -137,7 +158,10 @@
     "yearReleased": 2003,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "discraft-zone",
@@ -153,7 +177,10 @@
     "yearReleased": 2014,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "discraft-luna",
@@ -171,7 +198,10 @@
     "aliases": [
       "Paul McBeth Luna"
     ],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "discraft-undertaker",
@@ -187,7 +217,10 @@
     "yearReleased": 2014,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "discraft-thrasher",
@@ -203,7 +236,10 @@
     "yearReleased": 2017,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "mvp-tesla",
@@ -219,7 +255,10 @@
     "yearReleased": 2014,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "mvp-volt",
@@ -235,7 +274,10 @@
     "yearReleased": 2012,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "mvp-photon",
@@ -251,7 +293,10 @@
     "yearReleased": 2018,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "mvp-wave",
@@ -267,7 +312,10 @@
     "yearReleased": 2017,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "dynamic-discs-judge",
@@ -286,7 +334,10 @@
       "Emperor Judge",
       "Sockibomb Slammer"
     ],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "dynamic-discs-escape",
@@ -302,7 +353,10 @@
     "yearReleased": 2016,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "dynamic-discs-trespass",
@@ -318,23 +372,29 @@
     "yearReleased": 2014,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "latitude-64-pure",
     "brand": "Latitude 64",
     "mold": "Pure",
-    "speed": 3.0,
-    "glide": 3.0,
-    "turn": -1.0,
-    "fade": 1.0,
+    "speed": 3,
+    "glide": 3,
+    "turn": -1,
+    "fade": 1,
     "discType": "Putter",
-    "stability": "understable",
+    "stability": "overstable",
     "pdgaApproved": true,
     "yearReleased": 2013,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "latitude-64-river",
@@ -350,23 +410,29 @@
     "yearReleased": 2013,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "latitude-64-saint",
     "brand": "Latitude 64",
     "mold": "Saint",
-    "speed": 8.0,
-    "glide": 5.0,
-    "turn": -1.0,
-    "fade": 2.0,
+    "speed": 8,
+    "glide": 5,
+    "turn": -1,
+    "fade": 2,
     "discType": "Fairway",
-    "stability": "stable",
+    "stability": "overstable",
     "pdgaApproved": true,
     "yearReleased": 2012,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "discmania-fd",
@@ -384,7 +450,10 @@
     "aliases": [
       "Jackal"
     ],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "discmania-md3",
@@ -400,7 +469,10 @@
     "yearReleased": 2010,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "discmania-p2",
@@ -416,7 +488,10 @@
     "yearReleased": 2010,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "prodigy-h3-v2",
@@ -432,7 +507,10 @@
     "yearReleased": 2017,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "prodigy-d2",
@@ -448,7 +526,10 @@
     "yearReleased": 2013,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "prodigy-pa-3",
@@ -464,7 +545,10 @@
     "yearReleased": 2013,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "westside-harp",
@@ -480,7 +564,10 @@
     "yearReleased": 2014,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   },
   {
     "id": "westside-king",
@@ -496,6 +583,9 @@
     "yearReleased": 2013,
     "primaryStampUrl": null,
     "aliases": [],
-    "schemaVersion": 1
+    "maxWeightG": null,
+    "diameterCm": null,
+    "discClass": null,
+    "schemaVersion": 2
   }
 ]

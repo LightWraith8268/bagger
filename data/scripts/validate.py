@@ -16,11 +16,11 @@ def validate(discs_path: Path, schema_path: Path, check_urls: bool = True) -> li
     issues: list[str] = []
 
     try:
-        discs = json.loads(discs_path.read_text())
+        discs = json.loads(discs_path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as e:
         return [f"discs.json parse error: {e}"]
     try:
-        schema = json.loads(schema_path.read_text())
+        schema = json.loads(schema_path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as e:
         return [f"schema.json parse error: {e}"]
 

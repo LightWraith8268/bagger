@@ -91,15 +91,15 @@ def enrich(root: Path) -> list[dict]:
     mfr_dir = root / "intermediate" / "mfr"
     overrides_path = root / "scripts" / "manual_overrides.json"
 
-    pdga: list[dict] = json.loads(pdga_path.read_text()) if pdga_path.exists() else []
-    overrides: list[dict] = json.loads(overrides_path.read_text()) if overrides_path.exists() else []
+    pdga: list[dict] = json.loads(pdga_path.read_text(encoding="utf-8")) if pdga_path.exists() else []
+    overrides: list[dict] = json.loads(overrides_path.read_text(encoding="utf-8")) if overrides_path.exists() else []
 
     # Index manufacturer rows by (brand, mold) lower-cased
     mfr_index: dict[tuple[str, str], dict] = {}
     if mfr_dir.exists():
         for f in mfr_dir.glob("*.json"):
             try:
-                rows = json.loads(f.read_text())
+                rows = json.loads(f.read_text(encoding="utf-8"))
             except json.JSONDecodeError:
                 continue
             if not isinstance(rows, list):
@@ -202,7 +202,7 @@ def main() -> None:
     args = parser.parse_args()
 
     discs = enrich(args.root)
-    args.output.write_text(json.dumps(discs, indent=2, ensure_ascii=False) + "\n")
+    args.output.write_text(json.dumps(discs, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"Wrote {len(discs)} discs to {args.output}")
 
 

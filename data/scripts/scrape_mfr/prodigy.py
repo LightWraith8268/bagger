@@ -6,11 +6,11 @@ site's actual HTML structure (selectors below are placeholders).
 """
 
 from __future__ import annotations
-from typing import Iterable
 
 from bs4 import BeautifulSoup
 
-from scrape_mfr.base import MfrScraper, MfrDisc
+from scrape_mfr.base import MfrDisc
+from scrape_mfr.shopify_base import ShopifyDiscScraper
 
 
 def parse_prodigy_disc_page(html: str) -> MfrDisc:
@@ -42,14 +42,10 @@ def parse_prodigy_disc_page(html: str) -> MfrDisc:
     )
 
 
-class ProdigyScraper(MfrScraper):
+class ProdigyScraper(ShopifyDiscScraper):
     brand_slug = "prodigy"
     brand_display = "Prodigy"
-    INDEX_URL = "https://www.prodigydisc.com/collections/discs"
-
-    def scrape(self) -> Iterable[MfrDisc]:
-        # TODO(scraper): prodigydisc.com /collections/discs returns 404. /products.json returns 200 with 30 products but flight numbers are not in body_html.
-        return []
+    shopify_origin = "https://prodigydisc.com"
 
 
 if __name__ == "__main__":
