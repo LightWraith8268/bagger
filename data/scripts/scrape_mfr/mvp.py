@@ -6,11 +6,11 @@ site's actual HTML structure (selectors below are placeholders).
 """
 
 from __future__ import annotations
-from typing import Iterable
 
 from bs4 import BeautifulSoup
 
-from scrape_mfr.base import MfrScraper, MfrDisc
+from scrape_mfr.base import MfrDisc
+from scrape_mfr.shopify_base import ShopifyDiscScraper
 
 
 def parse_mvp_disc_page(html: str) -> MfrDisc:
@@ -42,14 +42,10 @@ def parse_mvp_disc_page(html: str) -> MfrDisc:
     )
 
 
-class MvpScraper(MfrScraper):
+class MvpScraper(ShopifyDiscScraper):
     brand_slug = "mvp"
     brand_display = "MVP"
-    INDEX_URL = "https://mvpdiscsports.com/disc-models/"
-
-    def scrape(self) -> Iterable[MfrDisc]:
-        # TODO(scraper): mvpdiscsports.com /collections/discs returns 404. /products.json also 404. Site may have moved or be JS-rendered.
-        return []
+    shopify_origin = "https://mvpdisc.com"
 
 
 if __name__ == "__main__":

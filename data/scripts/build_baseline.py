@@ -42,7 +42,7 @@ POPULAR_IDS = [
 
 
 def build_baseline(source: Path, output: Path) -> int:
-    full = json.loads(source.read_text())
+    full = json.loads(source.read_text(encoding="utf-8"))
     by_id = {d["id"]: d for d in full}
 
     picked = [by_id[i] for i in POPULAR_IDS if i in by_id]
@@ -50,7 +50,7 @@ def build_baseline(source: Path, output: Path) -> int:
     if len(picked) < 10:
         picked = full[:30]
 
-    output.write_text(json.dumps(picked, indent=2, ensure_ascii=False) + "\n")
+    output.write_text(json.dumps(picked, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return len(picked)
 
 
